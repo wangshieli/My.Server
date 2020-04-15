@@ -9,4 +9,21 @@
 
 // 添加要在此处预编译的标头
 
+#ifndef UNICODE
+#define UNICODE
+#endif // !UNICODE
+
+#define WIN32_LEAN_AND_MEAN
+
+#include <Windows.h>
+#include <WinSock2.h>
+#include <tchar.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#define APR_ALIGN(size, boundary) \
+    (((size) + ((boundary) - 1)) & ~((boundary) - 1))
+
+#define APR_ALIGN_DEFAULT(size) APR_ALIGN(size, 8)
+
 #endif //PCH_H

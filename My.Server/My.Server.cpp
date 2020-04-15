@@ -3,9 +3,51 @@
 
 #include "pch.h"
 #include <iostream>
+#include <process.h>
+
+#include "my_pools.h"
+
+apr_pool_t *root;
+
+unsigned int __stdcall test(PVOID pVoid)
+{
+	apr_pool_t *child;
+	apr_pool_create(&child, root);
+	void *pBuff = apr_palloc(child, sizeof(int));
+	int *pInt = new (pBuff) int(5);
+	printf("pInt = %d\n", *pInt);
+
+	apr_pool_t *grandson;
+	apr_pool_create(&grandson, child);
+	void *pBuff2 = apr_palloc(grandson, sizeof(int));
+	int *pInt2 = new (pBuff2) int(15);
+	printf("pInt2 = %d\n", *pInt2);
+
+	apr_pool_destory(grandson);
+
+	apr_pool_destory(child);
+
+	return 0;
+}
 
 int main()
 {
+	int rv;
+	rv = apr_pool_initialize();
+	apr_pool_create(&root, NULL);
+
+	for (int i = 0; i < 100000; i++)
+	{
+		_beginthreadex(NULL, 0, test, NULL, 0, NULL);
+	}
+
+	getchar();
+
+	apr_pool_destory(root);
+	apr_pool_terminate();
+
+
+	
     std::cout << "Hello World!\n";
 }
 

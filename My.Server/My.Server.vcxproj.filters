@@ -21,9 +21,24 @@
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="my_pools.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="my_thread_mutex.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="my_allocator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="my_pools.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="my_thread_mutex.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
