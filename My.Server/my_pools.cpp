@@ -38,6 +38,7 @@ int apr_allocator_create(apr_allocator_t **allocator)
 
 	memset(new_allocator, 0, SIZEOF_ALLOCATOR_T);
 	new_allocator->max_free_index = APR_ALLOCATOR_MAX_FREE_UNLIMITED;
+//	apr_allocator_max_free_set(new_allocator, 1024 * 10);
 
 	*allocator = new_allocator;
 
