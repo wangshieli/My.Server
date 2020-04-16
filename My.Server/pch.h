@@ -18,7 +18,6 @@
 #include <Windows.h>
 #include <WinSock2.h>
 #include <tchar.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 #define APR_ALIGN(size, boundary) \
